@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.btn-login {
+    background-color: #F05f44;
+    border-color: #F05f44;
+}
