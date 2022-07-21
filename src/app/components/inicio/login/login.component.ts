@@ -11,6 +11,7 @@ import { Usuario } from '../../../models/usuario';
 })
 export class LoginComponent implements OnInit {
   login: FormGroup;
+  loading = false;
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
@@ -32,14 +33,18 @@ export class LoginComponent implements OnInit {
        password: this.login.value.password
     }
 
-    if(usuario.nombreUsuario ==="admin" && usuario.password==="admin"){
-      this.login.reset();
-      this.router.navigate(["/dashboard"]);
-    }
-    else{
-      this.toastr.error('Usuario o contraseña incorrecto.', 'Error');
-      this.login.reset();
-    }
+    this.loading = true;
+    setTimeout(()=>{
+      if(usuario.nombreUsuario ==="admin" && usuario.password==="admin"){
+        this.login.reset();
+        this.router.navigate(["/dashboard"]);
+      }
+      else{
+        this.toastr.error('Usuario o contraseña incorrecto.', 'Error');
+        this.login.reset();
+      }
+      this.loading = false;
+    }, 3000);
 
     console.log(usuario);
   }
