@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.loading = false;
         this.login.reset();
-        this.loginService.setLocalStorage(data.usuario);
+        this.loginService.setLocalStorage(data.token);
         this.router.navigate(['/dashboard']);
       },
       (error) => {
@@ -52,17 +52,5 @@ export class LoginComponent implements OnInit {
         this.login.reset();
       }
     );
-    // setTimeout(()=>{
-    //   if(usuario.nombreUsuario ==="admin" && usuario.password==="admin"){
-    //     this.login.reset();
-    //     this.router.navigate(["/dashboard"]);
-    //   }
-    //   else{
-    //     this.toastr.error('Usuario o contraseña incorrecto.', 'Error');
-    //     this.login.reset();
-    //   }
-    //   this.loading = false;
-    // }, 3000);
-    // //console.log(usuario);
   }
 }
